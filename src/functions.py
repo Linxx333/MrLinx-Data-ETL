@@ -61,6 +61,7 @@ def scrapeo_equipos_jugadores(url,year,time):
                     players.append(i.text)
             except:
                 continue
+        print(players)
         players.pop(2)
         teams_ndplayers.append(players)
     superliga = pd.DataFrame(teams_ndplayers)
