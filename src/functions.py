@@ -1,5 +1,6 @@
 
 import pandas as pd
+import numpy as np
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
@@ -53,16 +54,31 @@ def scrapeo_equipos_jugadores(url,year,time):
         jugadores = driver.find_elements(By.TAG_NAME,'a')
         players = []
         players.append(teams[i])
+        players.append(str(year) + ' ' + str(time))
         for i in jugadores:
             try:
                 if 'player' in i.get_attribute('href'):
                     players.append(i.text)
             except:
                 continue
-        players.append(str(year) + ' ' + str(time))
-        players.pop(1)
+        players.pop(2)
         teams_ndplayers.append(players)
     superliga = pd.DataFrame(teams_ndplayers)
 
     return superliga
+
+def pasar_a_nan(x):
+    if x == '-':
+        x = np.nan
+    return x
+
+def limpiar_simbolo(x):
+    try:
+        x = x[:-1]
+        x = float(x)
+        return x
+    except:
+        return x
+
+
         
