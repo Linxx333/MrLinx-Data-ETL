@@ -1,6 +1,6 @@
 # MrLinx-Data_ETL
 
-![Stadium](img/estadio.jpg)
+![Stadium](img/estadio.png)
 
 
 
