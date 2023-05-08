@@ -26,7 +26,7 @@ Para empezar en base a la observación de los datos estructuro un modelo entidad
 
 ![Scheme](img/Scheme.png)
 
-**DISCLAIMER** Para este proyecto solo se ha tenido en cuenta en cuanto a ciertos aspectos la Superliga, la liga nacional de lol en España. Es por esto por lo que se dará a entender posteriormente que habrá tablas vacias a pesar de que en un futuro se planea la ampliación de los datos. En un futuro se tiene intención de introducir otras muchas competiciones y otros datos de interés ya contemplados en el modelo y  que serán explicados posteriormente
+**DISCLAIMER** Para este proyecto solo se ha tenido en cuenta en cuanto a ciertos aspectos la Superliga, la liga nacional de lol en España. Es por esto por lo que se dará a entender posteriormente que habrá tablas vacias a pesar de que en un futuro se planea la ampliación de los datos. En un futuro se tiene intención de introducir otras muchas competiciones y otros datos de interés ya contemplados en el modelo y  que serán explicados posteriormente.
 
 <details>
 <summary>EXPLICACIÓN DEL MODELO ENTIDAD RELACIÓN</summary>
@@ -67,4 +67,4 @@ Por último se han trasladado y traducido allí donde correspondían las columna
 
 # Conclusiones
 
-El resultado final del proyecto es una base de datos con una estructura adecuada aunque por finalizar donde ya se pueden empezar a vislumbrar características interesantes pudiendo acceder ya a datos de verdadero interés de la Superliga
+El resultado final del proyecto es una base de datos con una estructura adecuada aunque por finalizar donde ya se pueden empezar a vislumbrar características interesantes pudiendo acceder ya a datos de verdadero interés de la Superliga.
