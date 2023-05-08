@@ -1,6 +1,7 @@
 
 import pandas as pd
 import numpy as np
+import re
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
@@ -80,6 +81,23 @@ def limpiar_simbolo(x):
         return x
     except:
         return x
+def quitar_coma(x):
+       try:
+              x = re.sub(r',', '', x)
+              return x
+       except:
+              return x
+       
+
+      countries =  {'TW': 'Taiwan', 'TR': 'Turkey', 'KR': 'South Korea', 'NL':'Netherlands', 'CN': 'China', 'BG':'Bulgary', 'PS':'Palestine', 'EE':'Estonia', 'RU':'Russia',
+       'KW':'Kuwait', 'RO':'Romania', 'US':'USA', 'BA':'Bosniabosnia and herzegovina','Unknown':'Unknown', 'AU':'Australia',
+       'CL':'Chile', 'EG':'Egypt', 'VN':'Vietnam', 'MK':'North Macedonia', 'FI':'Finland', 'SY':'Syria', 'GR':'Greece', 'NO':'Norway', 'CR':'Costa Rica',
+       'VE':'Venezuela', 'DK':'Denmark', 'RS', ' HR', ' UY', ' NZ', ' AT', ' SK', ' PH',
+       ' GB', ' LB', ' IT', ' SI', ' TN', ' JO', ' DO', ' LT', ' UA',
+       ' HK', ' HU', ' MO', ' BY', ' MX', ' BE', ' CY', ' CH', ' ME',
+       ' PE', ' PF', ' DZ', ' AE', ' LV', ' MN', ' AL', ' MY', ' IE',
+       ' AM', ' MA', ' IL', ' EC', ' ZA', ' SG', ' CO', ' MD', ' IS',
+       ' LU', ' TH', ' ID'}
 
 
         
