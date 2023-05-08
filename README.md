@@ -1,10 +1,7 @@
 # MrLinx-Data_ETL
 
-<<<<<<< HEAD
 ![Stadium](img/estadio.jpg)
-=======
-![Blockbuster](img/estadio.jpg)
->>>>>>> 265499e6d5e4f6ec3a4b3db0e67bf56db7517ad6
+
 
 
 # Objetivo principal
