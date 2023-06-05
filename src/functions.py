@@ -121,6 +121,7 @@ def quitar_coma(x):
 
        try:
               x = re.sub(r',', '', x)
+              
               return x
        except:
               return x
