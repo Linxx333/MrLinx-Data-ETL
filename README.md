@@ -24,8 +24,8 @@ El proceso se divide en los siguientes pasos:
 
 Para empezar en base a la observación de los datos estructuro un modelo entidad relación de la siguiente manera:
 
-![Scheme](img/Scheme 1.png)
-![Scheme](img/Scheme 2.png)
+![Scheme](img/Scheme1.png)
+![Scheme](img/Scheme2.png)
 
 <details>
 <summary>EXPLICACIÓN DEL MODELO ENTIDAD RELACIÓN</summary>
