@@ -20,7 +20,7 @@ where p.nick = 'Flakked' and pl.nick = 'Attila'and gt.teamVs_id = gp.teamVs_id a
 
 -- Win Ratio --
 
-select p.nick as Player, pl.nick as PlayerVs, (AVG(gt.Winned)*100) as Winrate 
+select p.nick as Jugador, pl.nick as JugadorVs, (AVG(gt.Winned)*100) as Winrate 
 from games_teams as gt
 inner join players as p
 on gt.player_id4 = p.player_id
@@ -30,7 +30,7 @@ where p.nick = 'Flakked' and pl.nick = 'Attila';
 
 -- Nº DE ENCUENTROS --
 
-select p.nick as Player, pl.nick as PlayerVs, count(gt.teamVs_id) as 'Nº De Encuentros'
+select p.nick as Jugador, pl.nick as PlayerVs, count(gt.teamVs_id) as 'Nº De Encuentros'
 from games_teams as gt
 inner join players as p
 on gt.player_id4 = p.player_id
@@ -40,7 +40,7 @@ where p.nick = 'Flakked' and pl.nick = 'Attila';
 
 -- Campeón más usado VS -- 
 
-SELECT cg.Champion, (COUNT(*)/2) AS frecuencia
+SELECT cg.Champion as Campeón, (COUNT(*)/2) AS frecuencia
 FROM games_teams as gt
 inner join players as p
 on gt.player_id4 = p.player_id
@@ -58,7 +58,7 @@ GROUP BY gp.champs_id;
 
 -- Frecuencia de Campeones --
 
-SELECT cg.Champion, COUNT(*) AS frecuencia
+SELECT cg.Champion as Campeón, COUNT(*) AS frecuencia
 FROM games_players as gp
 inner join champs_global as cg
 on gp.champs_id = cg.champs_id
@@ -67,9 +67,17 @@ on gp.players_id = p.player_id
 where p.nick = 'Attila'
 GROUP BY gp.champs_id;
 
+-- Pentakills --
+
+select p.nick as Jugador, sum(gp.Pentakill) as Pentakills
+from games_players as gp
+inner join players as p
+on gp.players_id = p.player_id
+where p.nick = 'Attila';
+
 -- Número total de partidos --
 
-select  p.nick as Player, count(gp.gameP_id) as 'Nº De Partidos'
+select  p.nick as Jugador, count(gp.gameP_id) as 'Nº De Partidos'
 from games_players as gp
 inner join players as p
 on gp.players_id = p.player_id
@@ -77,7 +85,7 @@ where p.nick = 'Attila';
 
 -- Nº de Kills -- 
 
-select p.nick as Player, sum(gp.kills) as 'Nº De kills'
+select p.nick as Jugador, sum(gp.kills) as 'Nº De kills'
 from games_players as gp
 inner join players as p
 on gp.players_id = p.player_id
@@ -119,6 +127,16 @@ inner join games_teams as gt
 on t.team_id = gt.teamVs_id
 where p.nick = 'Attila' and t.name = 'Movistar Riders' and gp.team_id = gt.team_id and gp.players_id = gt.player_id4; 
 
+-- Contra quien se hizo una penta --
+
+select p.nick as Jugador, t.name as EquipoVs 
+from games_players as gp
+inner join players as p
+on gp.players_id = p.player_id
+inner join teams as t
+on gp.teamVs_id = t.team_id
+where p.nick = 'Attila' and gp.Pentakill = 1;
+
 -- EQUIPO VS EQUIPO --
 
 -- Nº de Encuentros --
@@ -131,7 +149,7 @@ inner join teams as tt
 on gt.teamVs_id = tt.team_id
 where t.name = 'Giants' and tt.name = 'Guasones';
 
--- Partida en la que más x y equipo Vs--
+-- Partida en la que más x --
 
 select t.name as Equipo,  max(gt.Team1Dragons) as Dragones
 from games_teams as gt
