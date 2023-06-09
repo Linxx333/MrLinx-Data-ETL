@@ -1,6 +1,9 @@
 INSERT INTO leagues(league_id, league) 
 VALUES (1, 'Superliga');
 
+-- DISTINTAS QUERYS DE EJEMPLO PARA PROBAR QUE DATOS SE PUEDEN SACAR CON LA BASE DE DATOS --
+
+
 --     PLAYER VS PLAYER   --
 
 -- KDA Vs Player --
@@ -128,6 +131,29 @@ inner join teams as tt
 on gt.teamVs_id = tt.team_id
 where t.name = 'Giants' and tt.name = 'Guasones';
 
+-- Partida en la que más x y equipo Vs--
+
+select t.name as Equipo,  max(gt.Team1Dragons) as Dragones
+from games_teams as gt
+inner join teams as t
+on gt.team_id = t.team_id
+inner join teams as tt
+on gt.teamVs_id = tt.team_id
+where t.name = 'Giants';
+
+-- Contra quien fue ese máximo --
+
+
+select t.name as Equipo, tt.name as EquipoVs
+from games_teams as gt
+inner join teams as t
+on gt.team_id = t.team_id
+inner join teams as tt
+on gt.teamVs_id = tt.team_id
+where t.name = 'Giants' and gt.Team1Dragons = 6; -- Este dato lo saco de tirar la query de arriba --
+
+
+
 -- Winrate Equipo Vs Equipo --
 
 select t.name as Equipo, tt.name as EquipoVs, avg(gt.Winned)*100 as 'Win Ratio'
@@ -137,3 +163,34 @@ on gt.team_id = t.team_id
 inner join teams as tt
 on gt.teamVs_id = tt.team_id
 where t.name = 'Giants' and tt.name = 'BISONS ECLUB';
+
+
+-- Campeones --
+
+-- Dato del x máximo y luego campeon con el que se hizo --
+
+select p.nick as Player ,max(hc.KDA)
+from hist_champs as hc
+left join `hist-players` as hp
+on hc.players_id = hp.players_id
+inner join players as p
+on hp.players_id = p.player_id
+inner join splits as s
+on hc.split_id = s.split_id
+inner join champs_global as cg
+on hc.champs_id = cg.champs_id
+where p.nick = 'Attila' and s.year = 2023 and s.split = 'Spring';
+
+
+select p.nick as Player ,cg.Champion
+from hist_champs as hc
+left join `hist-players` as hp
+on hc.players_id = hp.players_id
+inner join players as p
+on hp.players_id = p.player_id
+inner join splits as s
+on hc.split_id = s.split_id
+inner join champs_global as cg
+on hc.champs_id = cg.champs_id
+where p.nick = 'Attila' and s.year = 2023 and s.split = 'Spring' and hc.KDA = 5.5;
+
